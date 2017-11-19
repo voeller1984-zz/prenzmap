@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <title>Prenzlauer Berg Map - Berlin</title>
+    <link rel="stylesheet" href="css/customStyles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            $(".options-box").toggle(500);
+        });
+    });
+    </script>
+</head>
+
+<body>
+<div class="container">
+  <button>Menu</button> 
+  
+  <div class="options-box">
+    <h3>Prenzlauer Berg</h3>
+    <div>       
+		<input type="text" size="35" placeholder="Search Location" data-bind="textInput:searchString">
+    <ul data-bind="foreach: filteredLocations">
+        <li class="list-locations" data-bind="text:title, click:$root.itemSelected, css:{'item-selected': $root.isItemSelected($data)}"></li> 
+		</ul>
+    </div>
+  </div>
+  <div id="map"></div>
+</div>
+ 
+
+<script src="js/knockout-3.4.2.js" charset="utf-8"> </script>
+<script src="js/markers.js" charset="utf-8"> </script>
+<script src="js/map_style.js" charset="utf-8"> </script>
+<script src="js/vm.js" charset="utf-8"> </script>
+<script src="js/app.js" charset="utf-8"> </script>
+<script async defer
+ src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDVEi5_aun26zKErxM73RXzLU9VySnLuzk&callback=initApp">
+</script>
+
+</body>
+</html>
