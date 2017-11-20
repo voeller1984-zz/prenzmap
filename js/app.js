@@ -20,27 +20,28 @@ function initApp() {
 		if (infowindow.marker != marker) {
 			// Clear the infowindow content to give the streetview time to load.
 			infowindow.marker = marker;
+			var overlay;
 			//console.log(typeof(marker))
 			//console.log(typeof(marker.category))
 			//console.log(typeof marker.foursquareData);
-			if (marker.foursquareData != null ) {
-				URL = marker.foursquareData.url;
-	            if (typeof URL === 'undefined'){ URL = ""; }
-				var overlay = '<h5 class="markTitle">' + marker.title + '</h5>' + '<div>' +
+			if (marker.foursquareData !== null ) {
+				var URL_string = marker.foursquareData.url;
+	            if (typeof URL_string === 'undefined'){ URL_string = ""; }
+				overlay = '<h5 class="markTitle">' + marker.title + '</h5>' + '<div>' +
 					            '<h6 class="markTitle">' + marker.foursquareData.categories[0].name+ '</h6>' +
 					            '<p class="foresquareAddress">' + marker.foursquareData.location.address+ '</p>' +
 					            '<p class="foresquareAddress">' + marker.foursquareData.location.city + '</p>' +
 					            '<p class="foresquareAddress">' + marker.foursquareData.location.country + '</p>'+
-					             '<a href="'+ URL +'">' + URL+ '</a>' ;
-				console.log("foursquare info is avilable")
+					             '<a href="'+ URL_string +'">' + URL_string+ '</a>' ;
+				console.log("foursquare info is avilable");
 				// console.log(marker.foursquareData);
 				// console.log(marker.foursquareData.location.city);
 				
 			}
 			else {
-				var overlay = '<div>' + marker.title + '</div>';
-				console.log("only google map info available")
-				alert("something went wrong with the foresquare api, please try again later")
+				overlay = '<div>' + marker.title + '</div>';
+				console.log("only google map info available");
+				alert("something went wrong with the foresquare api, please try again later");
 			}
 			infowindow.setContent(overlay);
 			// Make sure the marker property is cleared if the infowindow is closed.
@@ -59,28 +60,29 @@ function initApp() {
 
 
 	// set markers based on locations array
-	for (var i = 0; i < locations.length; i++) {
-	  var position = {
+	locations.forEach(function(location, i) {
+		var position = {
 						lat: locations[i].lat,
 						lng: locations[i].lng
 					};
-	  var title = locations[i].title;
-	  var marker = new google.maps.Marker({
-		map: map, 
-		position: position,
-		title: title,
-		animation: google.maps.Animation.DROP,
-		id: i
-	  });
-	  // placeholder for foursquare response
-	  marker.foursquareData = null;	
-	  // Push the marker to our array of markers.
-	  markers.push(marker);
-	  // Create an onclick event to open the large infowindow at each marker.
-	  marker.addListener('click', function() {
-		populateInfoWindow(this, largeInfowindow);
-	  });
-	}
+		// console.log(locations);
+	  	var title = locations[i].title;
+	  	var marker = new google.maps.Marker({
+			map: map, 
+			position: position,
+			title: title,
+			animation: google.maps.Animation.DROP,
+			id: i
+	  	});
+	  	// placeholder for foursquare response
+	  	marker.foursquareData = null;	
+	  	// Push the marker to our array of markers.
+	  	markers.push(marker);
+	  	// Create an onclick event to open the large infowindow at each marker.
+	  	marker.addListener('click', function() {
+			populateInfoWindow(this, largeInfowindow);
+	  	});
+	});
 
 	var foursquareURL = function foursquareURL(e) {
 		var clientID = "JZ0JEMR3PBWCQMNDMLSA4XBMJTNLKQHTTHKWLFWD2RMPXWNZ";
@@ -107,7 +109,7 @@ function initApp() {
 
 		  });
 		});
-	}
+	};
 
 	// create View Model and apply ko bindings
 	vm = new VM(markers, populateInfoWindow, largeInfowindow);
