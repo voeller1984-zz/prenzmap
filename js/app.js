@@ -92,10 +92,11 @@ function initApp() {
 		var clientID = "JZ0JEMR3PBWCQMNDMLSA4XBMJTNLKQHTTHKWLFWD2RMPXWNZ";
 		var clientSecret ="HR4LQLE1RPQTHHAQX0N0MMAGBBVLAZWA10YGTHNW3FDEDXVD";
 		// console.log(e)
-	  	return 'https://api.foursquare.com/v2/venues/search?ll=' + e.position.lat() + ',' + e.position.lng() + '&client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20171104' + '&query=' + e.title;
+	  	return 'https://api.fourssquare.com/v2/venues/search?ll=' + e.position.lat() + ',' + e.position.lng() + '&client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20171104' + '&query=' + e.title;
 
 	};
 
+	var foursquareErr = false;
 	var loadFourSquareData = function(locations) {
 		Object.keys(locations).map(function (e) {
 			var url = foursquareURL(locations[e]);
@@ -108,12 +109,17 @@ function initApp() {
 		      	locations[e].foursquareData = foursquareData;
 		      	},
 		      	error: function (error) {
-    			console.error('There was an error with the foursquare api');
+    			foursquareErr = true;
 				}
 
 		  });
 		});
 	};
+	if (foursquareErr = true) {
+		console.log('There was an error with the foursquare api');
+    			var overlay = jQuery('<div id="overlay">There was an error with foursquare api, try again later</div>');
+				overlay.appendTo(document.body);
+	}
 
 	// create View Model and apply ko bindings
 	vm = new VM(markers, populateInfoWindow, largeInfowindow);

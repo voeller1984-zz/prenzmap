@@ -10,7 +10,22 @@ How to run
 -------------
 click here: https://voeller1984.github.io/prenzmap/
 
+download the repository locally
+unpack zip file
+click on index.html to run the app locally within your predefined browser
 click on markes and or side hamburger to filter and gather additional inforamtions
+
+
+Notes
+-------------
+* Foursquare API is being called only on page load --> clicking multiple times on the markers will work without generating new API Calls
+* Markers are initially handled by Google API but i am using subscribe in the VM to handle visibility of markers and infoWindow.
+* Responsiveness is handled by media queries, no framework is used.
+* foursquare API hourly limit is 200 calls, once hit this limit you may have to wait another 1hr.
+
+
+
+
 
 
 
