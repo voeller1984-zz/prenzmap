@@ -116,7 +116,7 @@ function initApp() {
 		  });
 		});
 	};
-	if (foursquareErr = true) {
+	if (foursquareErr == true) {
 		console.log('There was an error with the foursquare api');
     			var overlay = jQuery('<div id="overlay">There was an error with foursquare api, try again later</div>');
 				overlay.appendTo(document.body);
