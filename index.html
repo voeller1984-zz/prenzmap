@@ -4,13 +4,7 @@
     <link rel="stylesheet" href="css/customStyles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>
-    $(document).ready(function(){
-        $("button").click(function(){
-            $(".options-box").toggle(500);
-        });
-    });
-    </script>
+    <script src="js/toggler.js" charset="utf-8"> </script>
 </head>
 
 <body>
@@ -35,8 +29,7 @@
 <script src="js/map_style.js" charset="utf-8"> </script>
 <script src="js/vm.js" charset="utf-8"> </script>
 <script src="js/app.js" charset="utf-8"> </script>
-<script async defer
- src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDVEi5_aun26zKErxM73RXzLU9VySnLuzk&callback=initApp">
+<script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDVEi5_aun26zKErxM73RXzLU9VySnLuzk&callback=initApp" async defer onerror="googleError()">
 </script>
 
 </body>

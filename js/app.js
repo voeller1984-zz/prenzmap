@@ -19,6 +19,10 @@ function initApp() {
 		// Check to make sure the infowindow is not already opened on this marker.
 		if (infowindow.marker != marker) {
 			// Clear the infowindow content to give the streetview time to load.
+			marker.setAnimation(google.maps.Animation.BOUNCE);
+			setTimeout(function(){
+			  marker.setAnimation(null); 
+			}, 750);
 			infowindow.marker = marker;
 			var overlay;
 			//console.log(typeof(marker))
@@ -119,9 +123,9 @@ function initApp() {
 
 
 
-
-googleError = function googleError() {
-    alert(
+googleError = () => {
+  // Error handling
+  alert(
         'Something went wrong on Google Maps, refresh and try again.'
     );
 };
