@@ -92,7 +92,7 @@ function initApp() {
 		var clientID = "JZ0JEMR3PBWCQMNDMLSA4XBMJTNLKQHTTHKWLFWD2RMPXWNZ";
 		var clientSecret ="HR4LQLE1RPQTHHAQX0N0MMAGBBVLAZWA10YGTHNW3FDEDXVD";
 		// console.log(e)
-	  	return 'https://api.fourssquare.com/v2/venues/search?ll=' + e.position.lat() + ',' + e.position.lng() + '&client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20171104' + '&query=' + e.title;
+	  	return 'https://api.foursquare.com/v2/venues/search?ll=' + e.position.lat() + ',' + e.position.lng() + '&client_id=' + clientID + '&client_secret=' + clientSecret + '&v=20171104' + '&query=' + e.title;
 
 	};
 
@@ -110,6 +110,7 @@ function initApp() {
 		      	},
 		      	error: function (error) {
     			foursquareErr = true;
+    			// console.log("forequeafdd error true")
 				}
 
 		  });

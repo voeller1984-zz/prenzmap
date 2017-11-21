@@ -10,10 +10,10 @@ How to run
 -------------
 click here: https://voeller1984.github.io/prenzmap/
 
-download the repository locally
-unpack zip file
-click on index.html to run the app locally within your predefined browser
-click on markes and or side hamburger to filter and gather additional inforamtions
+* download the repository locally from here: https://github.com/voeller1984/prenzmap.git
+* unpack zip file
+* click on index.html to run the app locally within your predefined browser
+* click on markes and or side hamburger to filter and gather additional inforamtions
 
 
 Notes
